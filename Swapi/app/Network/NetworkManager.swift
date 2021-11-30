@@ -24,7 +24,6 @@ class NetworkManager: NSObject {
             completed(.failure(.invalidURL))
             return
         }
-               
         let task = URLSession.shared.dataTask(with: URLRequest(url: url)) { data, response, error in
             if let _ =  error {
                 completed(.failure(.unableToComplete))
@@ -54,24 +53,19 @@ class NetworkManager: NSObject {
             completed(.failure(.invalidURL))
             return
         }
-               
         let task = URLSession.shared.dataTask(with: URLRequest(url: url)) { data, response, error in
-            
             if let _ =  error {
                 completed(.failure(.unableToComplete))
                 return
             }
-                        
             guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {
                 completed(.failure(.invalidResponse))
                 return
             }
-            
             guard let data = data else {
                 completed(.failure(.invalidData))
                 return
             }
-            
             do {
                 let decoder = JSONDecoder()
                 let decodedResponse = try decoder.decode(Planet.self, from: data)
@@ -80,7 +74,6 @@ class NetworkManager: NSObject {
                 completed(.failure(.invalidData))
             }
         }
-        
         task.resume()
     }
     
@@ -89,24 +82,19 @@ class NetworkManager: NSObject {
             completed(.failure(.invalidURL))
             return
         }
-               
         let task = URLSession.shared.dataTask(with: URLRequest(url: url)) { data, response, error in
-            
             if let _ =  error {
                 completed(.failure(.unableToComplete))
                 return
             }
-                        
             guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {
                 completed(.failure(.invalidResponse))
                 return
             }
-            
             guard let data = data else {
                 completed(.failure(.invalidData))
                 return
             }
-            
             do {
                 let decoder = JSONDecoder()
                 let decodedResponse = try decoder.decode(Vehicle.self, from: data)
@@ -115,7 +103,64 @@ class NetworkManager: NSObject {
                 completed(.failure(.invalidData))
             }
         }
-        
+        task.resume()
+    }
+    
+    func getLanguage(_ raceURL: String, completed: @escaping (Result<Language, APError>) -> Void) {
+        guard let url = URL(string: raceURL) else {
+            completed(.failure(.invalidURL))
+            return
+        }
+        let task = URLSession.shared.dataTask(with: URLRequest(url: url)) { data, response, error in
+            if let _ =  error {
+                completed(.failure(.unableToComplete))
+                return
+            }
+            guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {
+                completed(.failure(.invalidResponse))
+                return
+            }
+            guard let data = data else {
+                completed(.failure(.invalidData))
+                return
+            }
+            do {
+                let decoder = JSONDecoder()
+                let decodedResponse = try decoder.decode(Language.self, from: data)
+                completed(.success(decodedResponse))
+            } catch {
+                completed(.failure(.invalidData))
+            }
+        }
+        task.resume()
+    }
+    
+    func getMovies(_ movieURL: String, completed: @escaping (Result<Movies, APError>) -> Void) {
+        guard let url = URL(string: movieURL) else {
+            completed(.failure(.invalidURL))
+            return
+        }
+        let task = URLSession.shared.dataTask(with: URLRequest(url: url)) { data, response, error in
+            if let _ =  error {
+                completed(.failure(.unableToComplete))
+                return
+            }
+            guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {
+                completed(.failure(.invalidResponse))
+                return
+            }
+            guard let data = data else {
+                completed(.failure(.invalidData))
+                return
+            }
+            do {
+                let decoder = JSONDecoder()
+                let decodedResponse = try decoder.decode(Movies.self, from: data)
+                completed(.success(decodedResponse))
+            } catch {
+                completed(.failure(.invalidData))
+            }
+        }
         task.resume()
     }
     

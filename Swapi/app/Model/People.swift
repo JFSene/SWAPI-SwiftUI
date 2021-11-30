@@ -15,7 +15,7 @@ class People: Codable, Identifiable {
     var height: String
     var mass: String
     var hairColor: String
-    var skinColor: String
+    var skin_color: String
     var eyeColor: String
     var birthYear: String
     var gender: String
@@ -27,6 +27,7 @@ class People: Codable, Identifiable {
     var created: String
     var edited: String
     var url: String
+    var language: String
     
     
     required init(from decoder: Decoder) throws {
@@ -36,7 +37,7 @@ class People: Codable, Identifiable {
         self.height = try container.decodeIfPresent(String.self, forKey: .height) ?? ""
         self.mass = try container.decodeIfPresent(String.self, forKey: .mass) ?? ""
         self.hairColor = try container.decodeIfPresent(String.self, forKey: .hairColor) ?? ""
-        self.skinColor = try container.decodeIfPresent(String.self, forKey: .skinColor) ?? ""
+        self.skin_color = try container.decodeIfPresent(String.self, forKey: .skin_color) ?? ""
         self.eyeColor = try container.decodeIfPresent(String.self, forKey: .eyeColor) ?? ""
         self.birthYear = try container.decodeIfPresent(String.self, forKey: .birthYear) ?? ""
         self.gender = try container.decodeIfPresent(String.self, forKey: .gender) ?? ""
@@ -48,5 +49,27 @@ class People: Codable, Identifiable {
         self.created = try container.decodeIfPresent(String.self, forKey: .created) ?? ""
         self.edited = try container.decodeIfPresent(String.self, forKey: .edited) ?? ""
         self.url = try container.decodeIfPresent(String.self, forKey: .url) ?? ""
+        self.language = try container.decodeIfPresent(String.self, forKey: .language) ?? ""
+    }
+}
+
+class Language: Codable, Identifiable {
+    var language: String
+    
+    required init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        self.language = try container.decodeIfPresent(String.self, forKey: .language) ?? ""
+    }
+}
+
+
+class Movies: Codable, Identifiable {
+    var title: String
+    var episode_id: Int
+    
+    required init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        self.title = try container.decodeIfPresent(String.self, forKey: .title) ?? ""
+        self.episode_id = try container.decodeIfPresent(Int.self, forKey: .episode_id) ?? 0
     }
 }

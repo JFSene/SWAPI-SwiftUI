@@ -6,26 +6,14 @@
 //
 
 import SwiftUI
-import UIKit
-
-let coloredNavAppearance = UINavigationBarAppearance()
 
 struct PeopleListView: View {
     @StateObject private var viewModel = PeopleListViewModel()
     
-    init() {
-            coloredNavAppearance.configureWithOpaqueBackground()
-            coloredNavAppearance.backgroundColor = .secondaryColor
-            coloredNavAppearance.titleTextAttributes = [.foregroundColor: UIColor.darkTextColor]
-            coloredNavAppearance.largeTitleTextAttributes = [.foregroundColor: UIColor.darkTextColor]
-            UINavigationBar.appearance().standardAppearance = coloredNavAppearance
-            UINavigationBar.appearance().scrollEdgeAppearance = coloredNavAppearance
-        }
-    
     var body: some View {
         ZStack {
             NavigationView {
-                List(viewModel.people) { person in 
+                List(viewModel.people) { person in
                     NavigationLink(
                         destination: DetailsView(person: person),
                         label: {
@@ -37,6 +25,7 @@ struct PeopleListView: View {
                         }
                     )
                 }
+                .buttonStyle(PlainButtonStyle())
                 .navigationBarTitle("Star Wars People")
             }
             .onAppear {  viewModel.getPeople() }

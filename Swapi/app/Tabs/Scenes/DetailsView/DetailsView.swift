@@ -8,24 +8,31 @@
 import SwiftUI
 
 struct DetailsView:View {
-    var isLoading = false
     var person: People
     
     var body: some View {
-        VStack(alignment: .leading) {
-            VStack {
-                List {
-                    CustomCell(person: person)
-                    PlanetView(planetURL: person.homeworld)
-                    Text(person.gender)
-                        .font(.body)
-                        .bold()
-                        .padding(10)
-                    Text(person.skinColor)
-                        .font(.body)
+        ZStack {
+            List {
+                VStack(alignment: .leading, spacing: 0, content: {
+                    ReusableTextView(title: "Name", systemImage: "person.fill", font: .title3, fontWeight: .semibold, color: .darkTextColor, paddingValue: 4)
+                    ReusableTextView(title: person.name, font: .title, fontWeight: .regular, color: .lightTextColor, paddingValue: 10)
+                    
+                    ReusableTextView(title: "Gender", systemImage: "person", font: .title3, fontWeight: .semibold, color: .darkTextColor, paddingValue: 4)
+                    ReusableTextView(title: person.gender, font: .body, fontWeight: .regular, color: .lightTextColor, paddingValue: 10)
+
+                    
+                    ReusableTextView(title: "Home Planet", systemImage: "globe", font: .title3, fontWeight: .semibold, color: .darkTextColor, paddingValue: 4)
+                    SwapiPlanetLoader(urlString: person.homeworld)
+                    
+                    ReusableTextView(title: "Skin Color", systemImage: "person.crop.square", font: .title3, fontWeight: .semibold, color: .darkTextColor, paddingValue: 4)
+                    ReusableTextView(title: person.skin_color, font: .body, fontWeight: .regular, color: .lightTextColor, paddingValue: 10)
+                    
+                })
+                ReusableTextView(title: "Movies", systemImage: "list.and.film", font: .title3, fontWeight: .semibold, color: .darkTextColor, paddingValue: 4)
+                ForEach(person.films, id: \.self) { movie in
+                    SwapiMoviesLoader(urlString: movie)
                 }
             }
-             Spacer()
         }
     }
 }

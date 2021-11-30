@@ -1,23 +1,23 @@
 //
-//  ImageLoader.swift
+//  LanguageLoader.swift
 //  Swapi
 //
-//  Created by Joel Sene on 29/11/21.
+//  Created by Joel Sene on 30/11/21.
 //
 
 import Foundation
 import SwiftUI
 
-final class VehicleLoader: ObservableObject {
-    @Published var vehicleArray: Vehicle?
+final class LanguageLoader: ObservableObject {
     @Published var alertItem: AlertItem?
+    @Published var languageModel: Language?
     
     func load(fromURL url: String) {
-        NetworkManager.shared.getVehicle(url) { [self] result in
+        NetworkManager.shared.getLanguage(url) { [self] result in
             DispatchQueue.main.async {
                 switch result {
-                case .success(let vehicle):
-                    self.vehicleArray = vehicle
+                case .success(let language):
+                    self.languageModel = language
                 case .failure(let error):
                     switch error {
                     case .invalidURL:
@@ -35,23 +35,23 @@ final class VehicleLoader: ObservableObject {
     }
 }
 
-struct RemoteVehicle: View {
-    var vehicle: Vehicle?
+struct RemoteLanguage: View {
+    var language: Language?
     
     var body: some View {
-        Text(vehicle?.name ?? "NA")
+        Text(language?.language ?? "NA")
             .font(.body)
             .foregroundColor(.lightTextColor)
     }
 }
 
-
-struct SwapiVehiclesLoader: View {
-    @StateObject private var vehicleLoader = VehicleLoader()
+struct SwapiLanguageLoader: View {
+    @StateObject private var languageLoader = LanguageLoader()
     var urlString: String
     
     var body: some View {
-        RemoteVehicle(vehicle: vehicleLoader.vehicleArray)
-            .onAppear { vehicleLoader.load(fromURL: urlString) }
+        RemoteLanguage(language: languageLoader.languageModel)
+            .onAppear { languageLoader.load(fromURL: urlString)}
+            .padding(.bottom, 10)
     }
 }

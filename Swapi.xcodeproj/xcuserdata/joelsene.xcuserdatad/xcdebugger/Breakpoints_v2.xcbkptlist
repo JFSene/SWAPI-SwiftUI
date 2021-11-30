@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   uuid = "710C81D3-AFB2-42A1-8C1D-B044A70F42FE"
+   type = "1"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "D1C2AB75-84A4-4CEE-B87F-93DC93C2DC15"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Swapi/app/Network/NetworkManager.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "27"
+            endingLineNumber = "27"
+            landmarkName = "getPeople(completed:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "D1C2AB75-84A4-4CEE-B87F-93DC93C2DC15 - e1e075767fdb564a"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Swapi.NetworkManager.getPeople(completed: (Swift.Result&lt;Swift.Array&lt;Swapi.People&gt;, Swapi.APError&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "Swapi"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/joelsene/Projects/SwapiSwiftUI/Swapi/Swapi/app/Network/NetworkManager.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "27"
+                  endingLineNumber = "27"
+                  offsetFromSymbolStart = "461">
+               </Location>
+               <Location
+                  uuid = "D1C2AB75-84A4-4CEE-B87F-93DC93C2DC15 - b1dae9436b1db3b9"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Optional&lt;Foundation.Data&gt;, Swift.Optional&lt;__C.NSURLResponse&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in Swapi.NetworkManager.getPeople(completed: (Swift.Result&lt;Swift.Array&lt;Swapi.People&gt;, Swapi.APError&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "Swapi"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/joelsene/Projects/SwapiSwiftUI/Swapi/Swapi/app/Network/NetworkManager.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "29"
+                  endingLineNumber = "29"
+                  offsetFromSymbolStart = "223">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "CA6D9A91-4A5E-4AEB-A31D-B6CFEFE747AA"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Swapi/app/Components/CustomCell.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "50"
+            endingLineNumber = "50"
+            landmarkName = "body"
+            landmarkType = "24">
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>
